@@ -1,8 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +16,83 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Home page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Welcome, User!</ion-card-title>
+      <ion-card-subtitle>Your partner in preventive care</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      We're here to help you stay informed and healthy. Explore resources, book appointments, and access healthcare easily.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Quick Links/Actions -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" routerLink="/doctors">
+          <ion-icon slot="start" name="people-outline"></ion-icon>
+          Find a Doctor
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="secondary" routerLink="/appointment-booking">
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          Book Appointment
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="tertiary" routerLink="/tabs/preventive-care">
+          <ion-icon slot="start" name="heart-outline"></ion-icon>
+          Health Education
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" routerLink="/tabs/appointments">
+          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+          My Appointments
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Featured Health Tip -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Today's Health Tip</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Stay Active:</strong> Aim for at least 30 minutes of exercise daily to boost your physical and mental health.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Motivational Quote or Health Fact -->
+  <ion-card>
+    <ion-card-content text-center>
+      <p><em>"The greatest wealth is health." – Virgil</em></p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Upcoming Appointment Summary -->
+  <ion-card *ngIf="upcomingAppointment">
+    <ion-card-header>
+      <ion-card-title>Next Appointment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Doctor:</strong> Dr. Jane Doe, Cardiology</p>
+      <p><strong>Date:</strong> October 21, 2024</p>
+      <p><strong>Time:</strong> 09:00 AM</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!upcomingAppointment">
+    <ion-card-content text-center>
+      <p>No upcoming appointments. Book now to stay on top of your health!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="goToChat()">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

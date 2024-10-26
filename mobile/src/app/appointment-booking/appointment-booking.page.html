@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Book Appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Specialization Selection -->
+  <ion-item>
+    <ion-label>Specialization</ion-label>
+    <ion-select [(ngModel)]="selectedSpecialization" (ionChange)="loadDoctors()">
+      <ion-select-option *ngFor="let spec of specializations" [value]="spec">
+        {{ spec }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Location Selection -->
+  <ion-item>
+    <ion-label>Location</ion-label>
+    <ion-select [(ngModel)]="selectedLocation" (ionChange)="loadDoctors()">
+      <ion-select-option *ngFor="let loc of locations" [value]="loc">
+        {{ loc }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Doctor Selection -->
+  <ion-item *ngIf="doctors.length > 0">
+    <ion-label>Doctor</ion-label>
+    <ion-select [(ngModel)]="selectedDoctorId" (ionChange)="loadAvailableSlots()">
+      <ion-select-option *ngFor="let doctor of doctors" [value]="doctor.id">
+        {{ doctor.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Time Slot Selection -->
+  <ion-item *ngIf="availableSlots.length > 0">
+    <ion-label>Available Slots</ion-label>
+    <ion-select [(ngModel)]="selectedSlot">
+      <ion-select-option *ngFor="let slot of availableSlots" [value]="slot">
+        {{ slot }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="bookAppointment()" [disabled]="!selectedSlot">Book Appointment</ion-button>
+</ion-content>

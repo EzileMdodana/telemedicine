@@ -3,6 +3,11 @@
     <ion-title>
       Appointments
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,10 +18,36 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Appointments page"></app-explore-container>
+  <ion-list>
+    <ion-card *ngFor="let appointment of appointments">
+      <ion-card-header>
+        <ion-card-title>{{ appointment.doctorName }}</ion-card-title>
+        <ion-card-subtitle>{{ appointment.specialization }}</ion-card-subtitle>
+      </ion-card-header>
 
+      <ion-card-content>
+        <p><strong>Date:</strong> {{ appointment.date }}</p>
+        <p><strong>Time:</strong> {{ appointment.time }}</p>
+        <p><strong>Location:</strong> {{ appointment.location }}</p>
+      </ion-card-content>
+
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="6">
+          <ion-button expand="block" color="warning" (click)="rescheduleAppointment(appointment.id)">
+            Reschedule
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="danger" (click)="cancelAppointment(appointment.id)">
+            Cancel
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+  
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button (click)="goToAppointmentBooking()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

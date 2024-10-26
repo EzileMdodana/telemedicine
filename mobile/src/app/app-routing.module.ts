@@ -9,6 +9,15 @@ const routes: Routes = [
   { path: 'doctor-list', loadChildren: () => import('./doctor-list/doctor-list.module').then(m => m.DoctorListPageModule) },
   { path: 'appointment', loadChildren: () => import('./appointment/appointment.module').then(m => m.AppointmentPageModule) },
   { path: 'consultation-history', loadChildren: () => import('./consultation-history/consultation-history.module').then(m => m.ConsultationHistoryPageModule) },
+  {
+    path: 'appointment-booking',
+    loadChildren: () => import('./appointment-booking/appointment-booking.module').then( m => m.AppointmentBookingPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  { path: 'profile', loadChildren: () => import('./tab3/tab3.module').then(m => m.Tab3PageModule) },
 ];
 
 @NgModule({
