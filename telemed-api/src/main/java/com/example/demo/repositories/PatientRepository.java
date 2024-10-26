@@ -9,4 +9,5 @@ import com.example.demo.models.patient.Patient;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
     // Additional custom query methods can go here if needed
+    Patient findByIdNumber(String idNumber);
 }

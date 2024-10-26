@@ -5,8 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "patients")
@@ -15,13 +14,10 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(min = 1, max = 100)
-    private String name;
-
-    @NotBlank
-    @Size(min = 1, max = 100)
-    private String contactInfo;
+    @NotNull
+    private String idNumber; // Government ID number
+    @NotNull
+    private String name; // Other fields...
 
     // Getters and Setters
     public Long getId() {
@@ -32,6 +28,14 @@ public class Patient {
         this.id = id;
     }
 
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,35 +44,5 @@ public class Patient {
         this.name = name;
     }
 
-    public String getContactInfo() {
-        return contactInfo;
-    }
-
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", contactInfo='" + contactInfo + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Patient)) return false;
-
-        Patient patient = (Patient) o;
-
-        return id != null ? id.equals(patient.id) : patient.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
+    // Add other fields and their getters/setters
 }

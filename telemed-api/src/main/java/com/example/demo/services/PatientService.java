@@ -10,4 +10,6 @@ public interface PatientService {
     List<Patient> getAllPatients();
     Patient getPatientById(Long patientId);
     Patient createPatient(Patient patient);
+    
+       Patient findPatientByIdNumber(String idNumber);
 }
