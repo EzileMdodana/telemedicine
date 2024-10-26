@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Preventive Care & Education</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Health Tips</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>Stay hydrated by drinking plenty of water throughout the day.</li>
+        <li>Eat a balanced diet rich in fruits and vegetables.</li>
+        <li>Get regular exercise, even if it's a simple daily walk.</li>
+        <li>Avoid smoking and excessive alcohol consumption.</li>
+        <li>Practice good hygiene to prevent the spread of infections.</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Educational Videos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Example video links or embedded videos -->
+      <iframe width="100%" height="200" src="https://www.youtube.com/watch?v=4egM_a_nmKk" frameborder="0" allowfullscreen></iframe>
+      <p>Understanding Diabetes: Symptoms and Prevention</p>
+
+      <iframe width="100%" height="200" src="https://youtu.be/oRW_ZhlZHzg?si=JyxPp2XjEnjS0eF4" frameborder="0" allowfullscreen></iframe>
+      <p>Exercise Tips for a Healthier Heart</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Articles</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>Why Preventive Care Matters</h2>
+      <p>Preventive care includes taking measures to avoid the development of diseases...</p>
+      <a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/eight-tips-for-healthy-eating/" target="_blank">Read more</a>
+
+      <h2>10 Ways to Boost Your Immune System</h2>
+      <p>Your immune system plays a crucial role in fighting infections...</p>
+      <a href="https://www.healthline.com/nutrition/27-health-and-nutrition-tips" target="_blank">Read more</a>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="goToChat()">
+      <ion-icon name="chatbubbles-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

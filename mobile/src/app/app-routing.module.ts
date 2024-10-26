@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'appointment-booking',
     loadChildren: () => import('./appointment-booking/appointment-booking.module').then( m => m.AppointmentBookingPageModule)
   },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  { path: 'profile', loadChildren: () => import('./tab3/tab3.module').then(m => m.Tab3PageModule) },
 ];
 
 @NgModule({
