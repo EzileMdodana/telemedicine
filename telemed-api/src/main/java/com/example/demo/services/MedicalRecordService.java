@@ -7,4 +7,5 @@ public interface MedicalRecordService {
     List<MedicalRecord> getAllMedicalRecords(Long patientId);
     MedicalRecord getMedicalRecordById(Long recordId);
     MedicalRecord createMedicalRecord(MedicalRecord medicalRecord);
+    List<MedicalRecord> getMedicalRecordsByPatientIdNumber(String idNumber);
 }

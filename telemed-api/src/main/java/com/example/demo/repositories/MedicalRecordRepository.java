@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface MedicalRecordRepository extends JpaRepository<MedicalRecord, Long> {
     // Custom query methods can go here if needed
     List<MedicalRecord> findByPatientId(Long patientId);
+    
 }
     

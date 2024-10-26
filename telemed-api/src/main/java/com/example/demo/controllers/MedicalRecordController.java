@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +33,14 @@ public class MedicalRecordController {
     public ResponseEntity<MedicalRecord> addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
         MedicalRecord createdRecord = medicalRecordService.createMedicalRecord(medicalRecord);
         return ResponseEntity.status(201).body(createdRecord);  // Return 201 Created status
+    }
+
+
+    // New endpoint to get records by patient ID number
+    @GetMapping("/search")
+    public ResponseEntity<List<MedicalRecord>> getRecordsByPatientIdNumber(@RequestParam String idNumber) {
+        List<MedicalRecord> records = medicalRecordService.getMedicalRecordsByPatientIdNumber(idNumber);
+        return ResponseEntity.ok(records);
     }
     
 }

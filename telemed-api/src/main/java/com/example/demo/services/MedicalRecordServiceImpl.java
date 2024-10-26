@@ -1,7 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.models.medical.MedicalRecord;
+import com.example.demo.models.patient.Patient;
 import com.example.demo.repositories.MedicalRecordRepository;
+import com.example.demo.repositories.PatientRepository; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class MedicalRecordServiceImpl implements MedicalRecordService {
 
     private final MedicalRecordRepository medicalRecordRepository;
+    @Autowired
+    private PatientRepository patientRepository;
 
     @Autowired
     public MedicalRecordServiceImpl(MedicalRecordRepository medicalRecordRepository) {
@@ -33,5 +37,12 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
         return medicalRecordRepository.save(medicalRecord);
     }
     
-    
+     @Override
+    public List<MedicalRecord> getMedicalRecordsByPatientIdNumber(String idNumber) {
+        Patient patient = patientRepository.findByIdNumber(idNumber); // Find patient by ID number
+        if (patient != null) {
+            return medicalRecordRepository.findByPatientId(patient.getId()); // Get records using patient ID
+        }
+        return List.of(); // Return an empty list if no patient found
+    }
 }
